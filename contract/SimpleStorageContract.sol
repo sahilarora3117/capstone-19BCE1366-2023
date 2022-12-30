@@ -57,6 +57,20 @@ contract SimpleStorage {
         }
         return _torets;
     }
+    
+    function retrieveLogID (uint256 _itemID) public view returns (LogisticLog[] memory) {
+        LogisticLog[] memory _torets = new LogisticLog[](logCount);
+        uint j = 0;
+        for (uint i = 0; i < logCount; i++) {
+            if (logisticlogger[i].itemID == _itemID) {
+            LogisticLog storage _toret = logisticlogger[i];
+            _torets[j] = _toret;
+            j += 1;
+            }
+            
+        }
+        return _torets;
+    }
     function retrieve_logCount() public view returns (uint256) {
         return logCount;
     }
